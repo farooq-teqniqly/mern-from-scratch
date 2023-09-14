@@ -26,7 +26,7 @@ jobs:
 
       - name: Set up Docker
         run: |
-          docker build -t $REACT_APP_IMAGE_NAME .
+          docker build -t $REACT_APP_IMAGE_NAME ../../proshop/app
           docker tag $REACT_APP_IMAGE_NAME $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
           docker login $REACT_APP_REGISTRY -u ${{ secrets.AZURE_REGISTRY_USERNAME }} -p ${{ secrets.AZURE_REGISTRY_PASSWORD }}
 
