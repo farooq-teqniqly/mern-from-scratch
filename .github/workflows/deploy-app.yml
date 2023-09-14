@@ -31,7 +31,9 @@ jobs:
           npm install
 
       - name: Build the React app
-        run: npm run build
+        run: |
+          cd proshop/app
+          npm run build
 
       - name: Run Tests
         run: npm test
