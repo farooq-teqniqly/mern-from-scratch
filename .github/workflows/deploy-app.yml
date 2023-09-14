@@ -36,13 +36,9 @@ jobs:
         run: |
           docker push $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
 
-      # - name: Update Azure Web App with the new container image
-      #   run: |
-      #     az webapp config container set --name $REACT_APP_WEBAPP_NAME --resource-group $REACT_APP_RESOURCE_GROUP --docker-custom-image-name $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest --docker-registry-server-url "https://$REACT_APP_REGISTRY" --docker-registry-server-user ${{ secrets.AZURE_REGISTRY_USERNAME }} --docker-registry-server-password ${{ secrets.AZURE_REGISTRY_PASSWORD }}
-
-      # - name: Set environment variables for your app (if needed)
-      #   run: |
-      #     az webapp config appsettings set --resource-group $REACT_APP_RESOURCE_GROUP --name $REACT_APP_WEBAPP_NAME --settings REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}
+      - name: Set environment variables for your app (if needed)
+        run: |
+          az webapp config appsettings set --resource-group $REACT_APP_RESOURCE_GROUP --name $REACT_APP_WEBAPP_NAME --settings REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}
 
       - name: Deployed successfully!
         run: echo 'The React app has been deployed to Azure Web App.'
