@@ -28,7 +28,7 @@ jobs:
       - name: Set up Docker
         run: |
           cd proshop/app
-          docker build -t $REACT_APP_IMAGE_NAME -build-arg PORT=${REACT_APP_PORT} .
+          docker build -t $REACT_APP_IMAGE_NAME --build-arg PORT=${REACT_APP_PORT} .
           docker tag $REACT_APP_IMAGE_NAME $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
           docker login $REACT_APP_REGISTRY -u ${{ secrets.AZURE_REGISTRY_USERNAME }} -p ${{ secrets.AZURE_REGISTRY_PASSWORD }}
 
