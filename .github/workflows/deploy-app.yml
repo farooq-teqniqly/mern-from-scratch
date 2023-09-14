@@ -16,6 +16,7 @@ jobs:
       REACT_APP_RESOURCE_GROUP: mern-from-scratch-rg
       REACT_APP_PORT: 80
       NODE_VERSION: lts/*
+      WORKING_DIR: proshop/app
 
     steps:
       - name: Checkout code
@@ -28,17 +29,17 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd proshop/app
+          cd ${{ env.WORKING_DIR }}
           npm install
 
       - name: Build the React app
         run: |
-          cd proshop/app
+          cd ${{ env.WORKING_DIR }}
           npm run build
 
       - name: Run Tests
         run: |
-          cd proshop/app
+          cd ${{ env.WORKING_DIR }}
           npm test
 
       - name: Login to Azure
@@ -48,7 +49,7 @@ jobs:
 
       - name: Set up Docker
         run: |
-          cd proshop/app
+          cd ${{ env.WORKING_DIR }}
           docker build -t $REACT_APP_IMAGE_NAME --build-arg PORT=${REACT_APP_PORT} .
           docker tag $REACT_APP_IMAGE_NAME $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
           docker login $REACT_APP_REGISTRY -u ${{ secrets.AZURE_REGISTRY_USERNAME }} -p ${{ secrets.AZURE_REGISTRY_PASSWORD }}
