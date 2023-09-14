@@ -36,7 +36,9 @@ jobs:
           npm run build
 
       - name: Run Tests
-        run: npm test
+        run: |
+          cd proshop/app
+          npm test
 
       - name: Login to Azure
         uses: azure/login@v1
