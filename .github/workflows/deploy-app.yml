@@ -65,6 +65,7 @@ jobs:
       - name: Verify Deployed App
         run: |
           npm install puppeteer
+          cd ${{ env.WORKING_DIR }}
           node verify-app.js
 
       - name: Deployed successfully!
