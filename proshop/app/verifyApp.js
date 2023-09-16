@@ -1,7 +1,7 @@
-import { launch } from "puppeteer";
+const puppeteer = require("puppeteer");
 
 (async () => {
-  const browser = await launch();
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const url = process.env.AZURE_APP_URL || "http://localhost:3000";
 
