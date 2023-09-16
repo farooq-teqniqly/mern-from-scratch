@@ -70,4 +70,4 @@ jobs:
           node verifyApp.js
 
       - name: Deployed successfully!
-        run: echo 'The React app has been deployed to Azure Web App.'
+        run: echo "The React app has been deployed to Azure Web App."
