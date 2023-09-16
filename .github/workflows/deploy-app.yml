@@ -45,21 +45,47 @@ jobs:
           cd ${{ env.WORKING_DIR }}
           npm test
 
-      - name: Login to Azure
-        uses: azure/login@v1
+      # - name: Login to Azure
+      #   uses: azure/login@v1
+      #   with:
+      #     creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to container registry
+        uses: docker/login-action@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          registry: https://fmteqniqly.azurecr.io/
+          username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
+          password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
 
-      - name: Set up Docker
-        run: |
-          cd ${{ env.WORKING_DIR }}
-          docker build -t $REACT_APP_IMAGE_NAME --build-arg PORT=${REACT_APP_PORT} .
-          docker tag $REACT_APP_IMAGE_NAME $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
-          docker login $REACT_APP_REGISTRY -u ${{ secrets.AZURE_REGISTRY_USERNAME }} -p ${{ secrets.AZURE_REGISTRY_PASSWORD }}
+      - name: Build and push container image to registry
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
+          file: ./Dockerfile
 
-      - name: Push Docker image to Azure Container Registry
-        run: |
-          docker push $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
+      # - name: Set up Docker
+      #   run: |
+      #     cd ${{ env.WORKING_DIR }}
+      #     docker build -t $REACT_APP_IMAGE_NAME --build-arg PORT=${REACT_APP_PORT} .
+      #     docker tag $REACT_APP_IMAGE_NAME $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
+      #     docker login $REACT_APP_REGISTRY -u ${{ secrets.AZURE_REGISTRY_USERNAME }} -p ${{ secrets.AZURE_REGISTRY_PASSWORD }}
+
+      # - name: Push Docker image to Azure Container Registry
+      #   run: |
+      #     docker push $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
+
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: $REACT_APP_WEBAPP_NAME
+          slot-name: "production"
+          images: $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
 
       - name: Set environment variables for your app (if needed)
         run: |
