@@ -62,5 +62,10 @@ jobs:
         run: |
           az webapp config appsettings set --resource-group $REACT_APP_RESOURCE_GROUP --name $REACT_APP_WEBAPP_NAME --settings REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}
 
+      - name: Verify Deployed App
+        run: |
+          npm install puppeteer
+          node verify-app.js
+
       - name: Deployed successfully!
         run: echo 'The React app has been deployed to Azure Web App.'
