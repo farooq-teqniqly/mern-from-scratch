@@ -1,16 +1,20 @@
 import React from "react";
 import { Product } from "./Product";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 export const ProductList = ({ products, showImages = true }) => {
   return (
-    <div data-testid="product-list">
+    <Row xs={1} md={3} className="g-4" data-testid="product-list">
       {products.map((product) => (
-        <Product
-          key={product.id}
-          product={product}
-          showImage={showImages}
-        ></Product>
+        <Col key={product.id}>
+          <Product
+            key={product.id}
+            product={product}
+            showImage={showImages}
+          ></Product>
+        </Col>
       ))}
-    </div>
+    </Row>
   );
 };

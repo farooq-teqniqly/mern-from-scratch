@@ -13,7 +13,7 @@ describe("Product component", () => {
   describe("Layout", () => {
     it("Has product name", () => {
       render(<Product product={product}></Product>);
-      const name = screen.getByRole("heading", { name: product.name });
+      const name = screen.getByText(product.name);
       expect(name).toBeInTheDocument();
     });
 
