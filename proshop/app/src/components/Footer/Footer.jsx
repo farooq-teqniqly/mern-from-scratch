@@ -8,6 +8,8 @@ export const Footer = ({ year = new Date().getFullYear() }) => {
         <ul>
           <li>
             <a href="/privacy-policy">Privacy Policy</a>
+          </li>
+          <li>
             <a href="/terms-of-service">Terms of Service</a>
           </li>
         </ul>
