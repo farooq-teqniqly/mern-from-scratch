@@ -5,6 +5,8 @@ const puppeteer = require("puppeteer");
   const page = await browser.newPage();
   const url = process.env.AZURE_APP_URL || "http://localhost:3000";
 
+  page.setDefaultNavigationTimeout(60000);
+
   try {
     await page.goto(url, { waitUntil: "domcontentloaded" });
 
