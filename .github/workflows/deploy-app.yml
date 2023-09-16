@@ -65,7 +65,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
+          tags: ${{env.REACT_APP_REGISTRY}}/${{env.REACT_APP_IMAGE_NAME}}:latest
           file: ./Dockerfile
 
       # - name: Set up Docker
@@ -85,7 +85,7 @@ jobs:
         with:
           app-name: $REACT_APP_WEBAPP_NAME
           slot-name: "production"
-          images: $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
+          images: ${{env.REACT_APP_REGISTRY}}/${{env.REACT_APP_IMAGE_NAME}}:latest
 
       - name: Set environment variables for your app (if needed)
         run: |
