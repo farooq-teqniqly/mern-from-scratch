@@ -2,6 +2,7 @@ import "./App.css";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { ProductList } from "./components/Product/ProductList";
+import Container from "react-bootstrap/Container";
 
 const products = [
   {
@@ -29,13 +30,13 @@ const products = [
 
 const App = () => {
   return (
-    <div>
+    <Container>
       <Header></Header>
       <main>
         <ProductList products={products} showImages={false}></ProductList>
       </main>
       <Footer></Footer>
-    </div>
+    </Container>
   );
 };
 
