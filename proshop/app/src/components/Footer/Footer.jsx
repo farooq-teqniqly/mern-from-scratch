@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Footer({ year = new Date().getFullYear() }) {
+export const Footer = ({ year = new Date().getFullYear() }) => {
   return (
     <footer>
       <p>&copy;{year} ProShop. All rights reserved.</p>
@@ -14,4 +14,4 @@ export default function Footer({ year = new Date().getFullYear() }) {
       </nav>
     </footer>
   );
-}
+};

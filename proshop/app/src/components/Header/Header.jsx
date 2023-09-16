@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header() {
+export const Header = () => {
   return (
     <header>
       <h1>ProShop</h1>
@@ -15,6 +15,4 @@ function Header() {
       </nav>
     </header>
   );
-}
-
-export default Header;
+};
