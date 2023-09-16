@@ -61,6 +61,7 @@ jobs:
           context: ./${{env.WORKING_DIR}}
           push: true
           tags: ${{env.REACT_APP_REGISTRY}}/${{env.REACT_APP_IMAGE_NAME}}:latest
+          build-args: PORT=${REACT_APP_PORT}
           # file: Dockerfile
 
       # - name: Set up Docker
