@@ -20,5 +20,11 @@ describe("App component", () => {
       const footer = screen.getByTestId("product-list");
       expect(footer).toBeInTheDocument();
     });
+
+    it("Does not show product images", () => {
+      render(<App></App>);
+      const images = screen.queryAllByRole("img");
+      expect(images).toHaveLength(0);
+    });
   });
 });

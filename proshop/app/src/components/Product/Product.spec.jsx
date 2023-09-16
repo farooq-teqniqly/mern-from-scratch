@@ -41,6 +41,12 @@ describe("Product component", () => {
         const image = screen.getByRole("img");
         expect(image).toHaveAttribute("alt", product.name);
       });
+
+      it("Not shown if showImage prop is false", () => {
+        render(<Product product={product} showImage={false}></Product>);
+        const images = screen.queryAllByRole("img");
+        expect(images).toHaveLength(0);
+      });
     });
   });
 });
