@@ -14,5 +14,11 @@ describe("App component", () => {
       const footer = screen.getByTestId("footer");
       expect(footer).toBeInTheDocument();
     });
+
+    it("Has product list", () => {
+      render(<App></App>);
+      const footer = screen.getByTestId("product-list");
+      expect(footer).toBeInTheDocument();
+    });
   });
 });
