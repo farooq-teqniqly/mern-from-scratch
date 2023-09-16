@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 
 export const ProductList = ({ products, showImages = true }) => {
   return (
-    <Row xs={1} md={3} className="g-4" data-testid="product-list">
+    <Row xs={1} md={3} data-testid="product-list">
       {products.map((product) => (
         <Col key={product.id}>
           <Product
