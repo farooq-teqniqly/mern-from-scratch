@@ -2,7 +2,7 @@ import React from "react";
 
 export const Header = () => {
   return (
-    <header>
+    <header data-testid="header">
       <h1>ProShop</h1>
       <nav>
         <ul>

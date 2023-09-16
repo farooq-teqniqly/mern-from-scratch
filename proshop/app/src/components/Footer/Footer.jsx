@@ -2,7 +2,7 @@ import React from "react";
 
 export const Footer = ({ year = new Date().getFullYear() }) => {
   return (
-    <footer>
+    <footer data-testid="footer">
       <p>&copy;{year} ProShop. All rights reserved.</p>
       <nav>
         <ul>
