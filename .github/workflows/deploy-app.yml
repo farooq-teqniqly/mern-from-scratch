@@ -45,11 +45,6 @@ jobs:
           cd ${{ env.WORKING_DIR }}
           npm test
 
-      # - name: Login to Azure
-      #   uses: azure/login@v1
-      #   with:
-      #     creds: ${{ secrets.AZURE_CREDENTIALS }}
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -78,6 +73,11 @@ jobs:
       # - name: Push Docker image to Azure Container Registry
       #   run: |
       #     docker push $REACT_APP_REGISTRY/$REACT_APP_IMAGE_NAME:latest
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
