@@ -83,7 +83,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: $REACT_APP_WEBAPP_NAME
+          app-name: ${{ env.REACT_APP_WEBAPP_NAME }}
           slot-name: "production"
           images: ${{env.REACT_APP_REGISTRY}}/${{env.REACT_APP_IMAGE_NAME}}:latest
 
