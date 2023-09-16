@@ -1,3 +1,4 @@
+import "./App.css";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { ProductList } from "./components/Product/ProductList";
