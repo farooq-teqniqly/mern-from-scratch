@@ -11,6 +11,7 @@ const products = [
     description: "A baseball to throw and hit.",
     price: 9.99,
     imageUrl: "baseball.png",
+    rating: 4.0,
   },
   {
     id: "p2",
@@ -18,6 +19,7 @@ const products = [
     description: "A baseball glove to play catch with.",
     price: 149.99,
     imageUrl: "baseball-glove.png",
+    rating: 3.7,
   },
   {
     id: "p3",
@@ -25,6 +27,14 @@ const products = [
     description: "A baseball bat hit balls with.",
     price: 99.99,
     imageUrl: "baseball-bat.png",
+    rating: 4.8,
+  },
+  {
+    id: "p4",
+    name: "Baseball shoes",
+    description: "Turf shoes.",
+    price: 119.99,
+    imageUrl: "baseball-shoes.png",
   },
 ];
 
